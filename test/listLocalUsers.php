@@ -16,10 +16,10 @@ if (count($users) > 0) {
     foreach ($users as $user) {
         printf(
             "id: %s\nemail: %s\nphone_number: %s\npreferred_notify_way: %s\n\n",
-            $user->getId(),
-            $user->getEmail(),
-            $user->getPhoneNumber(),
-            $user->getPreferredNotifyWay()
+            $user->getId()->getValue(),
+            $user->getEmail()->getValue(),
+            $user->getPhoneNumber()->getValue(),
+            $user->getPreferredNotifyWay()->getValue()
         );
     }
 }else{

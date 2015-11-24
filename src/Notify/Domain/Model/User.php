@@ -2,27 +2,31 @@
 
 namespace JLaso\Notify\Domain\Model;
 
+use JLaso\Notify\Domain\Type\Email;
+use JLaso\Notify\Domain\Type\Id;
+use JLaso\Notify\Domain\Type\PhoneNumber;
+use JLaso\Notify\Domain\Type\PreferredNotifyWay;
 use JLaso\Notify\Infrastructure\UserInterface;
 
 class User implements UserInterface
 {
-    /** @var  string */
+    /** @var Id */
     private $id;
-    /** @var  string */
+    /** @var Email */
     private $email;
-    /** @var  string */
+    /** @var PhoneNumber */
     private $phoneNumber;
-    /** @var  string */
+    /** @var PreferredNotifyWay */
     private $preferredNotifyWay;
 
     /**
      * User constructor.
-     * @param string $id
-     * @param string $email
-     * @param string $phoneNumber
-     * @param string $preferredNotifyWay
+     * @param Id $id
+     * @param Email $email
+     * @param PhoneNumber $phoneNumber
+     * @param PreferredNotifyWay $preferredNotifyWay
      */
-    public function __construct($id, $email, $phoneNumber, $preferredNotifyWay)
+    public function __construct(Id $id, Email $email, PhoneNumber $phoneNumber, PreferredNotifyWay $preferredNotifyWay)
     {
         $this->id = $id;
         $this->email = $email;
@@ -31,7 +35,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return Id
      */
     public function getId()
     {
@@ -39,7 +43,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return Email
      */
     public function getEmail()
     {
@@ -47,7 +51,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return PhoneNumber
      */
     public function getPhoneNumber()
     {
@@ -55,7 +59,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return PreferredNotifyWay
      */
     public function getPreferredNotifyWay()
     {
@@ -63,36 +67,48 @@ class User implements UserInterface
     }
 
     /**
-     * @param string $id
+     * @param Id $id
      */
-    public function setId($id)
+    public function setId(Id $id)
     {
         $this->id = $id;
     }
 
     /**
-     * @param string $email
+     * @param Email $email
      */
-    public function setEmail($email)
+    public function setEmail(Email $email)
     {
         $this->email = $email;
     }
 
     /**
-     * @param string $phoneNumber
+     * @param PhoneNumber $phoneNumber
      */
-    public function setPhoneNumber($phoneNumber)
+    public function setPhoneNumber(PhoneNumber $phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
     }
 
     /**
-     * @param string $preferredNotifyWay
+     * @param PreferredNotifyWay $preferredNotifyWay
      */
-    public function setPreferredNotifyWay($preferredNotifyWay)
+    public function setPreferredNotifyWay(PreferredNotifyWay $preferredNotifyWay)
     {
         $this->preferredNotifyWay = $preferredNotifyWay;
     }
 
-
+    /**
+     * @param array $array
+     * @return User
+     */
+    public static function createFromArray($array)
+    {
+        return new User(
+            new Id($array['id']),
+            new Email($array['email']),
+            new PhoneNumber($array['phone_number']),
+            new PreferredNotifyWay($array['preferred_notify_way'])
+        );
+    }
 }

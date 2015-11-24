@@ -43,9 +43,9 @@ SQL
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(":id", $id);
         $statement->execute();
-        $user = $statement->fetch(\PDO::FETCH_CLASS, 'StdClass');
+        $user = $statement->fetch();
 
-        return new User($user->id, $user->email, $user->phone_number, $user->preferred_notify_way);
+        return User::createFromArray($user);
     }
 
     /**
@@ -57,11 +57,11 @@ SQL
         $sql = "SELECT * FROM `{$tableName}`";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
-        $users = $statement->fetchAll(\PDO::FETCH_CLASS);
+        $users = $statement->fetchAll();
         // mapping part / hydrate part ?
         $result = array();
         foreach ($users as $user){
-            $result[] = new User($user->id, $user->email, $user->phone_number, $user->preferred_notify_way);
+            $result[] = User::createFromArray($user);
         }
         unset($users);
 
@@ -82,10 +82,10 @@ SQL
             (:id, :phone_number, :email, :preferred_notify_way);
 SQL;
         $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(':id', $user->getId(), \PDO::PARAM_STR);
-        $statement->bindValue(':phone_number', $user->getPhoneNumber(), \PDO::PARAM_STR);
-        $statement->bindValue(':email', $user->getEmail(), \PDO::PARAM_STR);
-        $statement->bindValue(':preferred_notify_way', $user->getPreferredNotifyWay(), \PDO::PARAM_STR);
+        $statement->bindValue(':id', $user->getId()->getValue(), \PDO::PARAM_STR);
+        $statement->bindValue(':phone_number', $user->getPhoneNumber()->getValue(), \PDO::PARAM_STR);
+        $statement->bindValue(':email', $user->getEmail()->getValue(), \PDO::PARAM_STR);
+        $statement->bindValue(':preferred_notify_way', $user->getPreferredNotifyWay()->getValue(), \PDO::PARAM_STR);
 
         $statement->execute();
     }
@@ -108,10 +108,10 @@ SQL;
         $statement->bindValue(
             array(':id', ':phone_number', ':email', ':preferred_notify_way'),
             array(
-                $user->getId(),
-                $user->getPhoneNumber(),
-                $user->getEmail(),
-                $user->getPreferredNotifyWay()
+                $user->getId()->getValue(),
+                $user->getPhoneNumber()->getValue(),
+                $user->getEmail()->getValue(),
+                $user->getPreferredNotifyWay()->getValue()
             )
         );
         $statement->execute();

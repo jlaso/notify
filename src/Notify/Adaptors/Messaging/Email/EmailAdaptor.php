@@ -37,7 +37,7 @@ class EmailAdaptor implements MessagingNotifyAdaptorInterface
         $msg = \Swift_Message::newInstance()
             ->setSubject("Message from me")
             ->setFrom($this->from)
-            ->setTo(array($user->getEmail()))
+            ->setTo(array($user->getEmail()->getValue()))
             ->setBody($message->getText())
         ;
 

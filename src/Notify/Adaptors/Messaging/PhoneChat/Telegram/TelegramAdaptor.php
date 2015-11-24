@@ -27,7 +27,7 @@ class TelegramAdaptor implements MessagingNotifyAdaptorInterface
      */
     public function sendNotification(UserInterface $user, MessageInterface $message)
     {
-        $this->telegramCli->msg($user->getPhoneNumber(), $message->getText());
+        $this->telegramCli->msg($user->getPhoneNumber()->getValue(), $message->getText());
 
         return true;
     }

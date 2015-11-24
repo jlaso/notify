@@ -6,24 +6,24 @@ use JLaso\Notify\DI\Container;
 use JLaso\Notify\Adaptors\Messaging\PhoneChat\Telegram\TelegramAdaptor;
 use JLaso\Notify\Adaptors\Messaging\Email\EmailAdaptor;
 use JLaso\Notify\Repositories\UserRepository;
+use JLaso\Notify\Domain\Model\Message;
 
-if ($argc < 3) {
-    die ("You have to invoke this program with phone, email and message\n");
+if ($argc < 2) {
+    die ("You have to invoke this program with phone and message\nphp test/test.php phone_number message\n");
 }
 
 $phone = $argv[1];
-$email = $argv[2];
-$message = $argv[3];
+$message = new Message($argv[2]);
 
 $container = Container::getInstance();
 
-$user = new \JLaso\Notify\Domain\Model\User("1", $email, $phone, "telegram");
-$message = new \JLaso\Notify\Domain\Model\Message($message);
-
 /** @var UserRepository $userRepository */
 $userRepository = $container->get('user-repository');
+$user = $userRepository->find($phone);
 
-$userRepository->save($user);
+if (!$user) {
+    die ("User with phone {$phone} not found");
+}
 
 /** @var EmailAdaptor $mailer */
 $mailer = $container->get('mailer');
