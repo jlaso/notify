@@ -28,6 +28,10 @@ class Email
         return $this->value;
     }
 
+    /**
+     * @param Email $email
+     * @return bool
+     */
     public function equalsTo(Email $email)
     {
         return $this->value == $email->getValue();

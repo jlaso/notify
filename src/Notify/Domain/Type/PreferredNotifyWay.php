@@ -31,11 +31,18 @@ class PreferredNotifyWay
         return $this->value;
     }
 
+    /**
+     * @param PreferredNotifyWay $preferredNotifyWay
+     * @return bool
+     */
     public function equalsTo(PreferredNotifyWay $preferredNotifyWay)
     {
         return $this->value == $preferredNotifyWay->getValue();
     }
 
+    /**
+     * @return string[]
+     */
     public static function getOptions()
     {
         return [
@@ -44,11 +51,17 @@ class PreferredNotifyWay
         ];
     }
 
+    /**
+     * @return PreferredNotifyWay
+     */
     public static function TELEGRAM()
     {
         return new static(self::TELEGRAM);
     }
 
+    /**
+     * @return PreferredNotifyWay
+     */
     public static function EMAIL()
     {
         return new static(self::EMAIL);

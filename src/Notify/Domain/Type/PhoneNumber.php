@@ -24,6 +24,10 @@ class PhoneNumber
         return $this->value;
     }
 
+    /**
+     * @param PhoneNumber $phoneNumber
+     * @return bool
+     */
     public function equalsTo(PhoneNumber $phoneNumber)
     {
         return $this->value == $phoneNumber->getValue();

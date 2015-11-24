@@ -23,6 +23,10 @@ class Id
         return $this->value;
     }
 
+    /**
+     * @param Id $id
+     * @return bool
+     */
     public function equalsTo(Id $id)
     {
         return $this->value == $id->getId();
