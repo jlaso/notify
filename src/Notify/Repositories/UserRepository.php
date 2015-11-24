@@ -5,7 +5,6 @@ namespace JLaso\Notify\Repositories;
 use JLaso\Notify\Infrastructure\PDOAdaptorInterface;
 use JLaso\Notify\Infrastructure\UserInterface;
 use JLaso\Notify\Infrastructure\UserRepositoryInterface;
-use JLaso\Telegram\Models\User;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -36,6 +35,14 @@ class UserRepository implements UserRepositoryInterface
     public function find($id)
     {
         return $this->bridge->find($id);
+    }
+
+    /**
+     * @return UserInterface[]
+     */
+    public function findAll()
+    {
+        return $this->bridge->findAll();
     }
 
     /**

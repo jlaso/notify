@@ -2,6 +2,7 @@
 
 namespace JLaso\Notify\Repositories;
 
+use JLaso\Notify\Domain\Model\User;
 use JLaso\Notify\Infrastructure\UserInterface;
 use JLaso\Notify\Infrastructure\UserRepositoryInterface;
 
@@ -20,8 +21,7 @@ CREATE TABLE {$tableName} (
     id CHAR(25) PRIMARY KEY,
     phone_number CHAR(25) NOT NULL,
     email CHAR(50) NOT NULL,
-    preferred_notify_way CHAR(25) NOT NULL,
-    created_at DATETIME NOT NULL
+    preferred_notify_way CHAR(25) NOT NULL
 )
 SQL
 ); }
@@ -38,11 +38,34 @@ SQL
      */
     public function find($id)
     {
-        $sql = "SELECT * FROM `{self::TABLE }` WHERE `id` = :id";
+        $tableName = self::TABLE;
+        $sql = "SELECT * FROM `{$tableName}` WHERE `id` = :id";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(":id", $id);
+        $statement->execute();
+        $user = $statement->fetch(\PDO::FETCH_CLASS, 'StdClass');
 
-        return $statement->execute();
+        return new User($user->id, $user->email, $user->phone_number, $user->preferred_notify_way);
+    }
+
+    /**
+     * @return UserInterface[]
+     */
+    public function findAll()
+    {
+        $tableName = self::TABLE;
+        $sql = "SELECT * FROM `{$tableName}`";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+        $users = $statement->fetchAll(\PDO::FETCH_CLASS);
+        // mapping part / hydrate part ?
+        $result = array();
+        foreach ($users as $user){
+            $result[] = new User($user->id, $user->email, $user->phone_number, $user->preferred_notify_way);
+        }
+        unset($users);
+
+        return $result;
     }
 
     /**
@@ -51,7 +74,20 @@ SQL
      */
     public function save(UserInterface $user)
     {
-        // TODO: Implement save() method.
+        $tableName = self::TABLE;
+        $sql = <<<SQL
+            INSERT INTO `{$tableName}`
+            (`id`, `phone_number`, `email`, `preferred_notify_way`)
+            VALUES
+            (:id, :phone_number, :email, :preferred_notify_way);
+SQL;
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(':id', $user->getId(), \PDO::PARAM_STR);
+        $statement->bindValue(':phone_number', $user->getPhoneNumber(), \PDO::PARAM_STR);
+        $statement->bindValue(':email', $user->getEmail(), \PDO::PARAM_STR);
+        $statement->bindValue(':preferred_notify_way', $user->getPreferredNotifyWay(), \PDO::PARAM_STR);
+
+        $statement->execute();
     }
 
     /**
@@ -60,27 +96,25 @@ SQL
      */
     public function update(UserInterface $user)
     {
-        // TODO: Implement update() method.
+        $tableName = self::TABLE;
+        $sql = <<<SQL
+            UPDATE `{$tableName}`
+            SET `phone_number` = ':phone_number',
+                `email` : ':email', `preferred_notify_way` = ':preferred_notify_way'
+            WHERE
+              `id` = ':id'
+SQL;
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(
+            array(':id', ':phone_number', ':email', ':preferred_notify_way'),
+            array(
+                $user->getId(),
+                $user->getPhoneNumber(),
+                $user->getEmail(),
+                $user->getPreferredNotifyWay()
+            )
+        );
+        $statement->execute();
     }
-
-
-//    public function select($from, $where = array(), $limit = null)
-//    {
-//        $whereClause = "";
-//        foreach ($where as $fld => $value) {
-//            $whereClause .= "`{$fld}` = :{$fld}";
-//        }
-//        $sql = "SELECT * FROM `{$from}` WHERE {$whereClause}";
-//        if ($limit) {
-//            $sql .= " LIMIT " . intval($limit);
-//        }
-//        $statement = $this->db->prepare($sql);
-//        foreach ($where as $fld => $value) {
-//            $statement->bindValue(":{$fld}", $value);
-//        }
-//        return $statement->execute();
-//
-//    }
-
 
 }

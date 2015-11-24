@@ -11,6 +11,11 @@ interface UserRepositoryInterface extends RepositoryInterface
     public function find($id);
 
     /**
+     * @return UserInterface[]
+     */
+    public function findAll();
+
+    /**
      * @param UserInterface $user
      * @return bool
      */
