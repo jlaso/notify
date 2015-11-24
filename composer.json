@@ -1,0 +1,25 @@
+{
+  "name": "jlaso/notify",
+  "description": "wrapper to notify users",
+  "type": "library",
+  "homepage": "https://github.com/jlaso/notify",
+  "authors": [
+    {
+      "name": "Joseluis Laso",
+      "email": "jlaso@joseluislaso.es",
+      "homepage": "http://www.joseluislaso.es",
+      "role": "Developer"
+    }
+  ],
+  "license" : "MIT",
+  "autoload": {
+    "psr-4": {
+      "JLaso\\Notify\\": "src/Notify"
+    }
+  },
+  "require": {
+    "jlaso/telegram-cli-wrapper": "dev-master",
+    "php-di/php-di": "^5.1",
+    "swiftmailer/swiftmailer": "^5.4"
+  }
+}
