@@ -1,10 +1,10 @@
 <?php
 
-namespace JLaso\Notify\Adaptors\Messaging\Email;
+namespace JLaso\Notify\Infrastructure\Adaptor\Messaging\Email;
 
-use JLaso\Notify\Adaptors\Messaging\MessagingNotifyAdaptorInterface;
-use JLaso\Notify\Infrastructure\MessageInterface;
-use JLaso\Notify\Infrastructure\UserInterface;
+use JLaso\Notify\Infrastructure\Adaptor\Messaging\MessagingNotifyAdaptorInterface;
+use JLaso\Notify\Domain\Model\MessageInterface;
+use JLaso\Notify\Domain\Model\UserInterface;
 
 class EmailAdaptor implements MessagingNotifyAdaptorInterface
 {

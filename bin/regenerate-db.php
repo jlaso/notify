@@ -2,7 +2,7 @@
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
-use JLaso\Notify\DI\Container;
+use JLaso\Notify\Domain\Service\DI\Container;
 
 $container = Container::getInstance();
 

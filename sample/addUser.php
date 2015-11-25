@@ -2,13 +2,13 @@
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
-use JLaso\Notify\DI\Container;
-use JLaso\Notify\Repositories\UserRepository;
+use JLaso\Notify\Domain\Service\DI\Container;
+use JLaso\Notify\Domain\Model\Repository\UserRepository;
 use JLaso\Notify\Domain\Model\User;
-use JLaso\Notify\Domain\Type\Id;
-use JLaso\Notify\Domain\Type\Email;
-use JLaso\Notify\Domain\Type\PreferredNotifyWay;
-use JLaso\Notify\Domain\Type\PhoneNumber;
+use JLaso\Notify\Domain\Model\Type\Email;
+use JLaso\Notify\Domain\Model\Type\Id;
+use JLaso\Notify\Domain\Model\Type\PhoneNumber;
+use JLaso\Notify\Domain\Model\Type\PreferredNotifyWay;
 
 if ($argc < 2) {
     die ("You have to invoke this program with phone and email\nphp test/addUser.php phone_number email\n");

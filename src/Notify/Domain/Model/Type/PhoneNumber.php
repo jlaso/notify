@@ -1,6 +1,6 @@
 <?php
 
-namespace JLaso\Notify\Domain\Type;
+namespace JLaso\Notify\Domain\Model\Type;
 
 class PhoneNumber
 {

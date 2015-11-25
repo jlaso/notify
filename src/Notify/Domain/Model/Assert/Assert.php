@@ -1,6 +1,6 @@
 <?php
 
-namespace JLaso\Notify\Domain\Assert;
+namespace JLaso\Notify\Domain\Model\Assert;
 
 class Assert
 {

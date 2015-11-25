@@ -1,11 +1,11 @@
 <?php
 
-namespace JLaso\Notify\Infrastructure;
+namespace JLaso\Notify\Domain\Model;
 
-use JLaso\Notify\Domain\Type\Email;
-use JLaso\Notify\Domain\Type\Id;
-use JLaso\Notify\Domain\Type\PhoneNumber;
-use JLaso\Notify\Domain\Type\PreferredNotifyWay;
+use JLaso\Notify\Domain\Model\Type\Email;
+use JLaso\Notify\Domain\Model\Type\Id;
+use JLaso\Notify\Domain\Model\Type\PhoneNumber;
+use JLaso\Notify\Domain\Model\Type\PreferredNotifyWay;
 
 interface UserInterface
 {

@@ -2,8 +2,6 @@
 
 namespace JLaso\Notify\Domain\Model;
 
-use JLaso\Notify\Infrastructure\MessageInterface;
-
 class Message implements MessageInterface
 {
     /** @var string */

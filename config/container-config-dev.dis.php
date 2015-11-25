@@ -3,6 +3,9 @@
 include_once __DIR__ . '/../vendor/autoload.php';
 
 use Interop\Container\ContainerInterface;
+use JLaso\Notify\Domain\Model\Repository\UserRepository;
+use JLaso\Notify\Infrastructure\Adaptor\Messaging\PhoneChat\Telegram\TelegramAdaptor;
+use JLaso\Notify\Infrastructure\Adaptor\Messaging\Email\EmailAdaptor;
 
 return [
     // app
@@ -16,7 +19,7 @@ return [
 
     // repositories
     'user-repository' => function (ContainerInterface $c) {
-        return new \JLaso\Notify\Repositories\UserRepository($c->get('database'));
+        return new UserRepository($c->get('database'));
     },
 
     // telegram-chat-service
@@ -25,7 +28,7 @@ return [
         return new \TelegramCliWrapper\TelegramCliWrapper($c->get('telegram-cli-socket'), true);
     },
     'telegram' => function (ContainerInterface $c) {
-        return new \JLaso\Notify\Adaptors\Messaging\PhoneChat\Telegram\TelegramAdaptor($c->get('telegram-cli'));
+        return new TelegramAdaptor($c->get('telegram-cli'));
     },
 
     // mailer
@@ -37,7 +40,7 @@ return [
         'password' => 'password',
     ),
     'mailer' => function (ContainerInterface $c) {
-        return new \JLaso\Notify\Adaptors\Messaging\Email\EmailAdaptor($c->get('mail_config'));
+        return new EmailAdaptor($c->get('mail_config'));
     },
 
 ];

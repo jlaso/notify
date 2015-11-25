@@ -1,10 +1,10 @@
 <?php
 
-namespace JLaso\Notify\Adaptors\Messaging\PhoneChat\Telegram;
+namespace JLaso\Notify\Infrastructure\Adaptor\Messaging\PhoneChat\Telegram;
 
-use JLaso\Notify\Adaptors\Messaging\MessagingNotifyAdaptorInterface;
-use JLaso\Notify\Infrastructure\MessageInterface;
-use JLaso\Notify\Infrastructure\UserInterface;
+use JLaso\Notify\Infrastructure\Adaptor\Messaging\MessagingNotifyAdaptorInterface;
+use JLaso\Notify\Domain\Model\MessageInterface;
+use JLaso\Notify\Domain\Model\UserInterface;
 use TelegramCliWrapper\TelegramCliWrapper;
 
 class TelegramAdaptor implements MessagingNotifyAdaptorInterface

@@ -1,6 +1,6 @@
 <?php
 
-namespace JLaso\Notify\Infrastructure;
+namespace JLaso\Notify\Domain\Model;
 
 interface MessageInterface
 {

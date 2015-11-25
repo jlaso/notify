@@ -2,10 +2,10 @@
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
-use JLaso\Notify\DI\Container;
-use JLaso\Notify\Adaptors\Messaging\PhoneChat\Telegram\TelegramAdaptor;
-use JLaso\Notify\Adaptors\Messaging\Email\EmailAdaptor;
-use JLaso\Notify\Repositories\UserRepository;
+use JLaso\Notify\Domain\Service\DI\Container;
+use JLaso\Notify\Domain\Model\Repository\UserRepository;
+use JLaso\Notify\Infrastructure\Adaptor\Messaging\PhoneChat\Telegram\TelegramAdaptor;
+use JLaso\Notify\Infrastructure\Adaptor\Messaging\Email\EmailAdaptor;
 use JLaso\Notify\Domain\Model\Message;
 
 if ($argc < 2) {

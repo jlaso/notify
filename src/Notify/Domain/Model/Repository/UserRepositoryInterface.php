@@ -1,6 +1,8 @@
 <?php
 
-namespace JLaso\Notify\Infrastructure;
+namespace JLaso\Notify\Domain\Model\Repository;
+
+use JLaso\Notify\Domain\Model\UserInterface;
 
 interface UserRepositoryInterface extends RepositoryInterface
 {

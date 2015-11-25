@@ -1,9 +1,8 @@
 <?php
 
-namespace JLaso\Notify\Domain\Type;
+namespace JLaso\Notify\Domain\Model\Type;
 
-
-use JLaso\Notify\Domain\Assert\Assert;
+use JLaso\Notify\Domain\Model\Assert\Assert;
 
 class PreferredNotifyWay
 {

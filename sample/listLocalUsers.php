@@ -2,8 +2,8 @@
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
-use JLaso\Notify\DI\Container;
-use JLaso\Notify\Repositories\UserRepository;
+use JLaso\Notify\Domain\Service\DI\Container;
+use JLaso\Notify\Domain\Model\Repository\UserRepository;
 
 $container = Container::getInstance();
 

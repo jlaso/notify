@@ -1,6 +1,6 @@
 <?php
 
-namespace JLaso\Notify\DI;
+namespace JLaso\Notify\Domain\Service\DI;
 
 use DI\ContainerBuilder;
 use DI\Container as DI_Container;
@@ -28,7 +28,7 @@ class Container
         $builder->useAutowiring(false);
         $builder->useAnnotations(false);
 
-        $builder->addDefinitions(__DIR__ . '/../../../config/container-config-dev.php');
+        $builder->addDefinitions(__DIR__ . '/../../../../../config/container-config-dev.php');
 
         $container = $builder->build();
         self::$instance = $container;

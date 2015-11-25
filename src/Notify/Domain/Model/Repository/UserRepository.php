@@ -1,10 +1,9 @@
 <?php
 
-namespace JLaso\Notify\Repositories;
+namespace JLaso\Notify\Domain\Model\Repository;
 
-use JLaso\Notify\Infrastructure\PDOAdaptorInterface;
-use JLaso\Notify\Infrastructure\UserInterface;
-use JLaso\Notify\Infrastructure\UserRepositoryInterface;
+use JLaso\Notify\Domain\Model\UserInterface;
+use JLaso\Notify\Infrastructure\Persistence\Sqlite\SqliteUserRepository;
 
 class UserRepository implements UserRepositoryInterface
 {

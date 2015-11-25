@@ -1,9 +1,9 @@
 <?php
 
-namespace JLaso\Notify\Adaptors\Messaging;
+namespace JLaso\Notify\Infrastructure\Adaptor\Messaging;
 
-use JLaso\Notify\Infrastructure\MessageInterface;
-use JLaso\Notify\Infrastructure\UserInterface;
+use JLaso\Notify\Domain\Model\MessageInterface;
+use JLaso\Notify\Domain\Model\UserInterface;
 
 interface MessagingNotifyAdaptorInterface
 {
