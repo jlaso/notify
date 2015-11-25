@@ -3,7 +3,7 @@
 include_once __DIR__ . '/../vendor/autoload.php';
 
 use Interop\Container\ContainerInterface;
-use JLaso\Notify\Domain\Model\Repository\UserRepository;
+use JLaso\Notify\Domain\Model\Repository\UserRepositoryFactory;
 use JLaso\Notify\Infrastructure\Adaptor\Messaging\PhoneChat\Telegram\TelegramAdaptor;
 use JLaso\Notify\Infrastructure\Adaptor\Messaging\Email\EmailAdaptor;
 
@@ -19,7 +19,7 @@ return [
 
     // repositories
     'user-repository' => function (ContainerInterface $c) {
-        return new UserRepository($c->get('database'));
+        return UserRepositoryFactory::create($c->get('database'));
     },
 
     // telegram-chat-service

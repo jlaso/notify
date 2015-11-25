@@ -20,6 +20,7 @@
   "require": {
     "jlaso/telegram-cli-wrapper": "dev-master",
     "php-di/php-di": "^5.1",
-    "swiftmailer/swiftmailer": "^5.4"
+    "swiftmailer/swiftmailer": "^5.4",
+    "jlaso/console": "dev-master"
   }
 }
