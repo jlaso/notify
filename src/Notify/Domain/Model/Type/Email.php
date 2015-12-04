@@ -2,7 +2,8 @@
 
 namespace JLaso\Notify\Domain\Model\Type;
 
-use JLaso\Notify\Domain\Model\Assert\Assert;
+use JLaso\Assert\Assert;
+use JLaso\Assert\AssertException;
 
 class Email
 {
@@ -12,6 +13,7 @@ class Email
     /**
      * Email constructor.
      * @param string $email
+     * @throws AssertException
      */
     public function __construct($email)
     {
@@ -21,7 +23,7 @@ class Email
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getValue()
     {

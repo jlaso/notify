@@ -17,7 +17,7 @@ class PhoneNumber
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getValue()
     {

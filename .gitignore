@@ -4,3 +4,4 @@ composer.lock
 config/container-config-dev.php
 config/container-config-prod.php
 db/*.sqlite
+cache

@@ -2,7 +2,8 @@
 
 namespace JLaso\Notify\Domain\Model\Type;
 
-use JLaso\Notify\Domain\Model\Assert\Assert;
+use JLaso\Assert\Assert;
+use JLaso\Assert\AssertException;
 
 class PreferredNotifyWay
 {
@@ -15,6 +16,7 @@ class PreferredNotifyWay
     /**
      * PreferredNotifyWay constructor.
      * @param string $value
+     * @throws AssertException
      */
     public function __construct($value)
     {

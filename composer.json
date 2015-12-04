@@ -21,6 +21,11 @@
     "jlaso/telegram-cli-wrapper": "dev-master",
     "php-di/php-di": "^5.1",
     "swiftmailer/swiftmailer": "^5.4",
-    "jlaso/console": "dev-master"
+    "jlaso/console": "dev-master",
+    "jlaso/assert": "dev-master",
+    "slim/slim": "^3.0@RC",
+    "twig/twig": "^1.23",
+    "slim/twig-view": "^2.0",
+    "slim/views": "^0.1.3"
   }
 }
